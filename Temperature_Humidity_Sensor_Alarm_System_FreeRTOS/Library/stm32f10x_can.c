@@ -273,7 +273,7 @@ uint8_t CAN_Init(CAN_TypeDef* CANx, CAN_InitTypeDef* CAN_InitStruct)
     }
     else
     {
-      InitStatus = CAN_InitStatus_Success ;
+      InitStatus = CAN_InitStatus_Success ; // Initialization OK
     }
   }
 

@@ -8,7 +8,8 @@ project(Temperature_Humidity_Sensor_Alarm_System_FreeRTOS LANGUAGES C)
 
 include(cmake/CLionIndex.cmake)
 
-# Keil FreeRTOS_Rebuild C inputs, except the browsing-only low-level files.
+# Baseline Keil C inputs and A/B entry points for navigation. This OBJECT
+# index target does not link these independent main functions together.
 set(index_sources
     FreeRTOS/Source/portable/MemMang/heap_4.c
     FreeRTOS/Source/event_groups.c
@@ -21,6 +22,7 @@ set(index_sources
     Hardware/Key.c
     Hardware/LED.c
     Hardware/OLED.c
+    Hardware/CAN_Bus.c
     Library/misc.c
     Library/stm32f10x_adc.c
     Library/stm32f10x_bkp.c
@@ -54,6 +56,8 @@ set(index_sources
     Tasks/task_display.c
     Tasks/task_sensor.c
     User/main.c
+    User/main_environment.c
+    User/main_manager.c
     User/stm32f10x_it.c
     Tasks/task_alarm.c
     Tasks/task_key.c

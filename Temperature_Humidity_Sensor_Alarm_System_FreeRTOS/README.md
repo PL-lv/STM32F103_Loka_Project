@@ -8,6 +8,18 @@
 
 ![硬件实物](assets/images/13d8b72b12c22ff2e7140d848e50ae0f.jpg)
 
+> **CAN 双节点升级进行中（2026-10-19）**：目标为 A 环境端采样上报、B 管理端显示/按键/报警/阈值保存。开发流程和最终接线以 [CAN开发流程](docs/CAN开发流程.md) 为准。S01、S02.1、S02.2 已由用户实物确认通过；当前 S02.3 加入 A 每秒发送 0x581 测试帧、B 过滤并轮询接收，正常模式 500 kbit/s，等待实物收发验收。原单板功能保留在 `FreeRTOS_Rebuild` 目标中。
+
+同一个 `Project.uvprojx` 现在包含三个构建目标：
+
+| 目标 | 入口 | 当前用途 | 生成固件 |
+|---|---|---|---|
+| `FreeRTOS_Rebuild` | `User/main.c` | 原单板采集、显示、按键、报警、阈值保存 | `Objects/Project.axf` |
+| `A_Environment` | `User/main_environment.c` | A 每秒发送测试帧，OLED 显示 TX/E/Alive，9600/8N1 输出 `[A]` | `Objects/A_Environment/A_Environment.axf` |
+| `B_Manager` | `User/main_manager.c` | B 校验测试帧，OLED 显示 RX/最后序号/Alive，9600/8N1 输出 `[B]` | `Objects/B_Manager/B_Manager.axf` |
+
+在 Keil 重新打开工程后选择所需目标，编译并烧到对应板。三个 main 都会出现在文件列表中，但通过每目标的 `Include in Target Build` 设置，实际只编译一个入口。A/B 新目标当前只做启动诊断，不提供原单板菜单和测量功能；要运行原有功能选择 `FreeRTOS_Rebuild`。本步 DHT11 仍留在 B，TJA1050 的 PA11/PA12 信号线仍保持断开。
+
 ---
 
 ## 目录
@@ -173,8 +185,8 @@ DHT11 → Sensor Task → sensorQueue → Display Task → OLED（RUN 状态下�
 | **按键 K3** | PA3 | 向上/递增 |
 | **按键 K4** | PA4 | 向下/递减 |
 | **按键 K5** | PA5 | 设置/返回 |
-| **报警 LED** | PA11 | 超阈值闪烁报警 |
-| **蜂鸣器** | PA12 | 超阈值鸣叫报警 |
+| **报警 LED** | PA6 | S01 从 PA11 迁移，低电平点亮；用户已确认本步实物通过 |
+| **蜂鸣器** | PA7 | S01 从 PA12 迁移，三脚低电平触发模块；用户已确认本步实物通过 |
 | **USART1** | TX: PA9, RX: PA10 | 串口发送至上位机 |
 | **W25Q64 (SPI2)** | CS: PB12, SCK: PB13, MISO: PB14, MOSI: PB15 | 适用 3.3V 模块，保存阈值 |
 

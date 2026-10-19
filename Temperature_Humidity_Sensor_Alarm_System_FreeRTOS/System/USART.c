@@ -14,7 +14,7 @@
      GPIO_InitTypeDef s;
      s.GPIO_Mode = GPIO_Mode_AF_PP;
      s.GPIO_Speed = GPIO_Speed_50MHz;
-     s.GPIO_Pin = GPIO_Pin_9;
+     s.GPIO_Pin = GPIO_Pin_9; // PA 9
      GPIO_Init(GPIOA, &s);
 
 

@@ -1,0 +1,5 @@
+# New A/B target outputs; existing tracked baseline outputs are untouched.
+/Objects/A_Environment/
+/Objects/B_Manager/
+/Listings/A_Environment/
+/Listings/B_Manager/

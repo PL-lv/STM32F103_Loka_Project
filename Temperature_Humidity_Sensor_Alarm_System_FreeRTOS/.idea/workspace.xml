@@ -33,9 +33,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6673047-3818-4576-b083-24d6a605a339" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/../4-1 OLED显示屏/Objects/Project.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../4-1 OLED显示屏/Objects/Project.build_log.htm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4-1 OLED显示屏/Project.uvguix.32663" beforeDir="false" afterPath="$PROJECT_DIR$/../4-1 OLED显示屏/Project.uvguix.32663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.axf" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.axf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvguix.32663" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvguix.32663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvoptx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/LED.c" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/LED.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/buzzer.c" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/buzzer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/stm32f10x_can.c" beforeDir="false" afterPath="$PROJECT_DIR$/Library/stm32f10x_can.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Project.axf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Project.axf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Project.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Project.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Project_FreeRTOS_Rebuild.dep" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Project_FreeRTOS_Rebuild.dep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/buzzer.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/buzzer.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/led.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/led.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/main.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/main.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/spi2_flash.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/spi2_flash.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/task_statemachine.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/task_statemachine.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/threshold_storage.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/threshold_storage.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/w25q64.crf" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/w25q64.crf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.uvguix.32663" beforeDir="false" afterPath="$PROJECT_DIR$/Project.uvguix.32663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/Project.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/Project.uvprojx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System/USART.c" beforeDir="false" afterPath="$PROJECT_DIR$/System/USART.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +86,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/stm32f10x_can.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/stm32f10x_gpio.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/stm32f10x_spi.c" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -74,61 +99,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0001843204540226" />
-      <entry key="S2" value="1.1517791258735235" />
-      <entry key="S5" value="1.6859660681463082" />
-      <entry key="S10" value="2.1632186608652706" />
-      <entry key="S30" value="2.6668533309268816" />
-      <entry key="S60" value="2.826243566448448" />
-      <entry key="M2" value="2.9708321581377866" />
-      <entry key="M5" value="4.6286803518655475" />
-      <entry key="M10" value="11.269881670887381" />
-      <entry key="M15" value="18.33182007535511" />
-      <entry key="M30" value="32.53687897712955" />
-      <entry key="H1" value="44.56451401253359" />
-      <entry key="H2" value="52.468304725389444" />
-      <entry key="H4" value="57.01021129060156" />
-      <entry key="D1" value="61.1353551177587" />
-      <entry key="W1" value="61.8756446244262" />
+      <entry key="MS100" value="1.0000000049200366" />
+      <entry key="MS500" value="1.0311008113844615" />
+      <entry key="S2" value="1.695063284826344" />
+      <entry key="S5" value="2.308738237139636" />
+      <entry key="S10" value="2.6175039251720107" />
+      <entry key="S30" value="2.8632898788724983" />
+      <entry key="S60" value="2.93042325592246" />
+      <entry key="M2" value="2.964902474206591" />
+      <entry key="M5" value="2.9966171060206888" />
+      <entry key="M10" value="3.324498339891011" />
+      <entry key="M15" value="4.508858896652563" />
+      <entry key="M30" value="12.06548962894607" />
+      <entry key="H1" value="27.145429771382396" />
+      <entry key="H2" value="43.04250978001743" />
+      <entry key="H4" value="54.74262053754157" />
+      <entry key="D1" value="67.16684323208578" />
+      <entry key="W1" value="69.58751144912253" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.8612794337332338E-281" />
-      <entry key="S5" value="5.104164133469732E-113" />
-      <entry key="S10" value="7.144343310248835E-57" />
-      <entry key="S30" value="1.9259903430844012E-19" />
-      <entry key="S60" value="4.3886106492652114E-10" />
-      <entry key="M2" value="2.094901107275761E-5" />
-      <entry key="M5" value="0.013442047029399648" />
-      <entry key="M10" value="0.11593984228641882" />
-      <entry key="M15" value="0.2377689483142018" />
-      <entry key="M30" value="0.4876155743146459" />
-      <entry key="H1" value="0.6982947617694449" />
-      <entry key="H2" value="0.8356403303870896" />
-      <entry key="H4" value="0.9141336501776367" />
-      <entry key="D1" value="0.9851483085317968" />
-      <entry key="W1" value="0.997864699845776" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="3.73092231461941E-172" />
+      <entry key="S30" value="7.198998262524615E-58" />
+      <entry key="S60" value="2.6830949037491414E-29" />
+      <entry key="M2" value="5.179859943810392E-15" />
+      <entry key="M5" value="1.930755171994473E-6" />
+      <entry key="M10" value="0.0013895161647114707" />
+      <entry key="M15" value="0.012452094338604636" />
+      <entry key="M30" value="0.11158895258315066" />
+      <entry key="H1" value="0.33404932657191605" />
+      <entry key="H2" value="0.5779700049067564" />
+      <entry key="H4" value="0.7602433853094391" />
+      <entry key="D1" value="0.9553417884579966" />
+      <entry key="W1" value="0.9934946649299815" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0015537821948338258" />
-      <entry key="MS500" value="0.2743647663310769" />
-      <entry key="S2" value="0.8093635770513278" />
-      <entry key="S5" value="1.3956892213200365" />
-      <entry key="S10" value="1.9357150111243502" />
-      <entry key="S30" value="2.558495879796708" />
-      <entry key="S60" value="2.766609703698205" />
-      <entry key="M2" value="2.938851477940708" />
-      <entry key="M5" value="4.621278460435484" />
-      <entry key="M10" value="11.362401444941755" />
-      <entry key="M15" value="18.546096978464455" />
-      <entry key="M30" value="33.00568082855952" />
-      <entry key="H1" value="45.25065804034868" />
-      <entry key="H2" value="53.29700879814501" />
-      <entry key="H4" value="57.9206352672447" />
-      <entry key="D1" value="62.1198491217053" />
-      <entry key="W1" value="62.87341493583609" />
+      <entry key="MS100" value="2.9729428644325382E-6" />
+      <entry key="MS500" value="0.10055138930168747" />
+      <entry key="S2" value="1.171488542548847" />
+      <entry key="S5" value="2.0439870478784647" />
+      <entry key="S10" value="2.4732181165911915" />
+      <entry key="S30" value="2.8122262539774" />
+      <entry key="S60" value="2.9044980646463805" />
+      <entry key="M2" value="2.9518397401639813" />
+      <entry key="M5" value="2.9913031956345253" />
+      <entry key="M10" value="3.322262842157013" />
+      <entry key="M15" value="4.51685653087842" />
+      <entry key="M30" value="12.169485893366947" />
+      <entry key="H1" value="27.47099288519108" />
+      <entry key="H2" value="43.61393209821438" />
+      <entry key="H4" value="55.49877185760465" />
+      <entry key="D1" value="68.12136140664882" />
+      <entry key="W1" value="70.58088455897649" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -202,6 +227,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SelectedDebugProfileService">{
   &quot;profileIdByStamp&quot;: [
@@ -263,6 +293,7 @@
       <workItem from="1792039485629" duration="3035000" />
       <workItem from="1792075121062" duration="12000" />
       <workItem from="1792130088922" duration="22000" />
+      <workItem from="1792389220389" duration="6439000" />
     </task>
     <servers />
   </component>

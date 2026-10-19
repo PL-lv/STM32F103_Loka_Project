@@ -951,12 +951,12 @@ I (.\Library\misc.h)(0x4D783BB4)
 I (System\Record_storage.h)(0x6A9E73E9)
 F (.\System\Record_storage.h)(0x6A9E73E9)()
 F (.\System\Threshold_storage.c)(0x6AC9E0B1)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\threshold_storage.o --omf_browse .\objects\threshold_storage.crf --depend .\objects\threshold_storage.d)
-I (System\Threshold_storage.h)(0x6AC9DF72)
+I (System\Threshold_storage.h)(0x6ACA23A7)
 I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (.\Hardware\W25Q64.h)(0x6AC9DF72)
 I (D:\Keli5\ARM\ARMCC\include\string.h)(0x588B8344)
-F (.\System\Threshold_storage.h)(0x6AC9DF72)()
-F (.\Hardware\LED.c)(0x6A9E73E9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
+F (.\System\Threshold_storage.h)(0x6ACA23A7)()
+F (.\Hardware\LED.c)(0x6AD5B195)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
 I (.\Start\stm32f10x.h)(0x6A9E73E9)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1059,7 +1059,7 @@ I (.\FreeRTOS\Source\include\task.h)(0x6A61A6CB)
 I (.\FreeRTOS\Source\include\list.h)(0x6A61A6CB)
 F (.\Hardware\OLED.h)(0x6A917E82)()
 F (.\Hardware\OLED_Font.h)(0x6A9E73E9)()
-F (.\Hardware\buzzer.c)(0x6A9E73E9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\buzzer.o --omf_browse .\objects\buzzer.crf --depend .\objects\buzzer.d)
+F (.\Hardware\buzzer.c)(0x6AD5B195)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\buzzer.o --omf_browse .\objects\buzzer.crf --depend .\objects\buzzer.d)
 I (.\Start\stm32f10x.h)(0x6A9E73E9)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1120,7 +1120,7 @@ I (.\Library\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Library\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Library\misc.h)(0x4D783BB4)
 F (.\Hardware\timer_delay.h)(0x6A917E82)()
-F (.\Hardware\SPI2_Flash.c)(0x6AC9DF72)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\spi2_flash.o --omf_browse .\objects\spi2_flash.crf --depend .\objects\spi2_flash.d)
+F (.\Hardware\SPI2_Flash.c)(0x6ACB7E05)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\spi2_flash.o --omf_browse .\objects\spi2_flash.crf --depend .\objects\spi2_flash.d)
 I (Hardware\SPI2_Flash.h)(0x6AC9DF72)
 I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (.\Start\stm32f10x.h)(0x6A9E73E9)
@@ -1151,7 +1151,7 @@ I (.\Library\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Library\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Library\misc.h)(0x4D783BB4)
 F (.\Hardware\SPI2_Flash.h)(0x6AC9DF72)()
-F (.\Hardware\W25Q64.c)(0x6AC9DF72)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\w25q64.o --omf_browse .\objects\w25q64.crf --depend .\objects\w25q64.d)
+F (.\Hardware\W25Q64.c)(0x6ACB7BE8)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\w25q64.o --omf_browse .\objects\w25q64.crf --depend .\objects\w25q64.d)
 I (.\FreeRTOS\Source\include\FreeRTOS.h)(0x6A61A6CB)
 I (D:\Keli5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1429,7 +1429,7 @@ I (.\Hardware\oled.h)(0x6A917E82)
 I (.\System\USART.h)(0x6A917E82)
 I (D:\Keli5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (Tasks\task_key.h)(0x6A9E73E9)
-I (.\System\Threshold_storage.h)(0x6AC9DF72)
+I (.\System\Threshold_storage.h)(0x6ACA23A7)
 I (.\Hardware\W25Q64.h)(0x6AC9DF72)
 F (.\Tasks\task_statemachine.h)(0x6AC8F049)()
 F (.\Tasks\task_record.c)(0x6A9E73E9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\task_record.o --omf_browse .\objects\task_record.crf --depend .\objects\task_record.d)
@@ -1539,7 +1539,7 @@ I (.\Tasks\task_alarm.h)(0x6A9E73E9)
 I (.\Tasks\task_key.h)(0x6A9E73E9)
 I (.\Tasks\task_statemachine.h)(0x6AC8F049)
 I (.\Tasks\task_record.h)(0x6A9E73E9)
-I (.\System\Threshold_storage.h)(0x6AC9DF72)
+I (.\System\Threshold_storage.h)(0x6ACA23A7)
 I (.\Hardware\W25Q64.h)(0x6AC9DF72)
 F (.\User\stm32f10x_conf.h)(0x6A917E82)()
 F (.\User\stm32f10x_it.c)(0x6A917E82)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_FreeRTOS_Rebuild-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
@@ -1584,6 +1584,91 @@ I (.\FreeRTOS\Source\include\task.h)(0x6A61A6CB)
 I (.\FreeRTOS\Source\include\list.h)(0x6A61A6CB)
 F (.\User\stm32f10x_it.h)(0x6A917E82)()
 F (.\User\FreeRTOSConfig.h)(0x6A9E73E9)()
+F (.\User\main_environment.c)(0x6AD5BD3E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_A_Environment-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\objects\a_environment\main_environment.o --omf_browse .\objects\a_environment\main_environment.crf --depend .\objects\a_environment\main_environment.d)
+I (.\FreeRTOS\Source\include\FreeRTOS.h)(0x6A61A6CB)
+I (D:\Keli5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (.\User\FreeRTOSConfig.h)(0x6A9E73E9)
+I (.\Start\stm32f10x.h)(0x6A9E73E9)
+I (.\Start\core_cm3.h)(0x4D523B58)
+I (.\Start\system_stm32f10x.h)(0x4D783CAA)
+I (.\User\stm32f10x_conf.h)(0x6A917E82)
+I (.\Library\stm32f10x_adc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_bkp.h)(0x4D783BB4)
+I (.\Library\stm32f10x_can.h)(0x4D783BB4)
+I (.\Library\stm32f10x_cec.h)(0x4D783BB4)
+I (.\Library\stm32f10x_crc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_dac.h)(0x4D783BB4)
+I (.\Library\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (.\Library\stm32f10x_dma.h)(0x4D783BB4)
+I (.\Library\stm32f10x_exti.h)(0x4D783BB4)
+I (.\Library\stm32f10x_flash.h)(0x4D783BB4)
+I (.\Library\stm32f10x_fsmc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_gpio.h)(0x4D783BB4)
+I (.\Library\stm32f10x_i2c.h)(0x4D783BB4)
+I (.\Library\stm32f10x_iwdg.h)(0x4D783BB4)
+I (.\Library\stm32f10x_pwr.h)(0x4D783BB4)
+I (.\Library\stm32f10x_rcc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_rtc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_sdio.h)(0x4D783BB4)
+I (.\Library\stm32f10x_spi.h)(0x4D783BB4)
+I (.\Library\stm32f10x_tim.h)(0x4D783BB4)
+I (.\Library\stm32f10x_usart.h)(0x4D783BB4)
+I (.\Library\stm32f10x_wwdg.h)(0x4D783BB4)
+I (.\Library\misc.h)(0x4D783BB4)
+I (.\FreeRTOS\Source\include\projdefs.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\portable.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\deprecated_definitions.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\portable\RVDS\ARM_CM3\portmacro.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\mpu_wrappers.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\task.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\list.h)(0x6A61A6CB)
+I (.\System\USART.h)(0x6A917E82)
+I (D:\Keli5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+F (.\User\main_manager.c)(0x6AD5B540)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\Hardware -I .\Tasks -I .\User -I .\FreeRTOS\Source\include -I .\FreeRTOS\Source\portable\MemMang -I .\FreeRTOS\Source\portable\RVDS\ARM_CM3 -I .\FreeRTOS\Source-I.\RTE\_B_Manager-ID:\Keli5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keli5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\objects\b_manager\main_manager.o --omf_browse .\objects\b_manager\main_manager.crf --depend .\objects\b_manager\main_manager.d)
+I (.\FreeRTOS\Source\include\FreeRTOS.h)(0x6A61A6CB)
+I (D:\Keli5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (D:\Keli5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (.\User\FreeRTOSConfig.h)(0x6A9E73E9)
+I (.\Start\stm32f10x.h)(0x6A9E73E9)
+I (.\Start\core_cm3.h)(0x4D523B58)
+I (.\Start\system_stm32f10x.h)(0x4D783CAA)
+I (.\User\stm32f10x_conf.h)(0x6A917E82)
+I (.\Library\stm32f10x_adc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_bkp.h)(0x4D783BB4)
+I (.\Library\stm32f10x_can.h)(0x4D783BB4)
+I (.\Library\stm32f10x_cec.h)(0x4D783BB4)
+I (.\Library\stm32f10x_crc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_dac.h)(0x4D783BB4)
+I (.\Library\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (.\Library\stm32f10x_dma.h)(0x4D783BB4)
+I (.\Library\stm32f10x_exti.h)(0x4D783BB4)
+I (.\Library\stm32f10x_flash.h)(0x4D783BB4)
+I (.\Library\stm32f10x_fsmc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_gpio.h)(0x4D783BB4)
+I (.\Library\stm32f10x_i2c.h)(0x4D783BB4)
+I (.\Library\stm32f10x_iwdg.h)(0x4D783BB4)
+I (.\Library\stm32f10x_pwr.h)(0x4D783BB4)
+I (.\Library\stm32f10x_rcc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_rtc.h)(0x4D783BB4)
+I (.\Library\stm32f10x_sdio.h)(0x4D783BB4)
+I (.\Library\stm32f10x_spi.h)(0x4D783BB4)
+I (.\Library\stm32f10x_tim.h)(0x4D783BB4)
+I (.\Library\stm32f10x_usart.h)(0x4D783BB4)
+I (.\Library\stm32f10x_wwdg.h)(0x4D783BB4)
+I (.\Library\misc.h)(0x4D783BB4)
+I (.\FreeRTOS\Source\include\projdefs.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\portable.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\deprecated_definitions.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\portable\RVDS\ARM_CM3\portmacro.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\mpu_wrappers.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\task.h)(0x6A61A6CB)
+I (.\FreeRTOS\Source\include\list.h)(0x6A61A6CB)
+I (.\System\USART.h)(0x6A917E82)
+I (D:\Keli5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (.\Hardware\LED.h)(0x6A917E82)
+I (.\Hardware\buzzer.h)(0x6A917E82)
+I (.\Hardware\OLED.h)(0x6A917E82)
 F (.\FreeRTOS\Source\include\atomic.h)(0x6A61A6CB)()
 F (.\FreeRTOS\Source\include\croutine.h)(0x6A61A6CB)()
 F (.\FreeRTOS\Source\include\deprecated_definitions.h)(0x6A61A6CB)()

@@ -1,5 +1,8 @@
-#include "stm32f10x.h"
+﻿#include "stm32f10x.h"
 #include "delay.h"
+
+/* CAN 升级 S01：管理端报警 LED 迁到 PA6，释放 PA11 给 CAN_RX。 */
+#define ALARM_LED_PIN GPIO_Pin_6
 
 /**
   * 函    数：LED初始化
@@ -11,15 +14,15 @@ void LED_Init(void)
     /*开启时钟*/
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);		//开启GPIOA的时钟
 
+    /* 低电平点亮：先预置高电平，再配置输出，默认关闭。 */
+    GPIO_SetBits(GPIOA, ALARM_LED_PIN);
+
     /*GPIO初始化*/
     GPIO_InitTypeDef GPIO_InitStructure;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+    GPIO_InitStructure.GPIO_Pin = ALARM_LED_PIN;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);						//将PA11脚初始化为推挽输出
-
-    /*设置GPIO初始化后的默认电平*/
-    GPIO_SetBits(GPIOA, GPIO_Pin_11);				//设置PA11
+    GPIO_Init(GPIOA, &GPIO_InitStructure); // PA6 推挽输出
 }
 
 /**
@@ -29,7 +32,7 @@ void LED_Init(void)
   */
 void LED1_ON(void)
 {
-    GPIO_ResetBits(GPIOA, GPIO_Pin_11);		//设置PA11引脚为低电平
+    GPIO_ResetBits(GPIOA, ALARM_LED_PIN); // PA6 低电平点亮
 }
 
 /**
@@ -39,7 +42,7 @@ void LED1_ON(void)
   */
 void LED1_OFF(void)
 {
-    GPIO_SetBits(GPIOA, GPIO_Pin_11);		//设置PA11引脚为高电平
+    GPIO_SetBits(GPIOA, ALARM_LED_PIN); // PA6 高电平关闭
 }
 
 /**
@@ -49,13 +52,13 @@ void LED1_OFF(void)
   */
 void LED1_Turn(void)
 {
-    if (GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)		//获取输出寄存器的状态，如果当前引脚输出低电平
+    if (GPIO_ReadOutputDataBit(GPIOA, ALARM_LED_PIN) == 0)
     {
-        GPIO_SetBits(GPIOA, GPIO_Pin_11);					//则设置PA11引脚为高电平
+        GPIO_SetBits(GPIOA, ALARM_LED_PIN);
     }
     else													//否则，即当前引脚输出高电平
     {
-        GPIO_ResetBits(GPIOA, GPIO_Pin_11);					//则设置PA11引脚为低电平
+        GPIO_ResetBits(GPIOA, ALARM_LED_PIN);
     }
 }
 
