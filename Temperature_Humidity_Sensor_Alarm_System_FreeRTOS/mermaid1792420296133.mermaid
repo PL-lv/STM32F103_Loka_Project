@@ -1,0 +1,23 @@
+graph LR
+    subgraph A_A端环境
+        AT["Environment_StartupTask"]
+        ADS["OLED / USART"]
+    end
+    subgraph CAN驱动层
+        INIT["CAN_Bus_Init"]
+        SEND["CAN_Bus_SendFrame"]
+        RECV["CAN_Bus_TryReceive"]
+    end
+    subgraph B_B端管理
+        BT["Manager_StartupTask"]
+        CHK["Manager_IsTestFrame"]
+        BDS["OLED / USART"]
+    end
+    INIT --> AT
+    INIT --> BT
+    AT --> SEND
+    SEND -->|物理总线 581| RECV
+    RECV --> BT
+    BT --> CHK
+    CHK --> BDS
+    AT --> ADS

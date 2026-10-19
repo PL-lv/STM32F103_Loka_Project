@@ -3,15 +3,22 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
+// static 修饰函数，表示这个函数只能在当前 .c 文件中调用。
+// 函数 CAN_Bus_ConfigTestFilter 用于配置 CAN 过滤器，只接收特定 ID 的消息。
 static void CAN_Bus_ConfigTestFilter(void)
 {
     CAN_FilterInitTypeDef filter;
 
     /* 32 位过滤器：标准 ID 在位 31:21，IDE 在位 2，RTR 在位 1。 */
-    filter.CAN_FilterNumber = 0;
-    filter.CAN_FilterMode = CAN_FilterMode_IdMask;
-    filter.CAN_FilterScale = CAN_FilterScale_32bit;
-    filter.CAN_FilterIdHigh = (uint16_t)(CAN_BUS_TEST_ID << 5);
+    filter.CAN_FilterNumber = 0; // 一共 14 个过滤器，编号 0~13，这里选择编号 0 的过滤器
+    filter.CAN_FilterMode = CAN_FilterMode_IdMask; // 掩码模式，掩码中的 1 表示必须比较，0 表示忽略这一位。
+    // 32 位过滤器：标准 ID 在位 31:21，IDE 在位 2，RTR 在位 1。
+    filter.CAN_FilterScale = CAN_FilterScale_32bit; // 32 位过滤器
+//  标准 CAN ID 是 11 位，存放在 32 位过滤器的 bit 31～21。
+//  而 CAN_FilterIdHigh 只代表整个 32 位过滤器的高 16 位。
+//  所以，标准 ID 需要在这个 16 位字段中左移 5 位。
+//  过滤失败后，B端的 CAN 控制器仍然可以在 ACK 槽发送显性位，确认物理总线上的报文被正确接收。
+    filter.CAN_FilterIdHigh = (uint16_t)(CAN_BUS_TEST_ID << 5); // 过滤器预先配置的目标 ID
     filter.CAN_FilterIdLow = 0;
     filter.CAN_FilterMaskIdHigh = 0xFFE0;
     filter.CAN_FilterMaskIdLow = 0x0006; /* 同时要求标准帧、数据帧。 */
@@ -74,16 +81,16 @@ CAN_BusInitResult CAN_Bus_Init(void)
 
 CAN_BusTxResult CAN_Bus_SendFrame(CanTxMsg *message)
 {
-    uint8_t mailbox;
+    uint8_t mailbox; // CAN 控制器有三个发送邮箱，返回值表示使用的邮箱编号。
     uint8_t status;
     TickType_t started;
 
-    mailbox = CAN_Transmit(CAN1, message);
+    mailbox = CAN_Transmit(CAN1, message); // 发送消息，返回邮箱编号
     if (mailbox == CAN_TxStatus_NoMailBox) {
-        return CAN_BUS_TX_BUSY;
+        return CAN_BUS_TX_BUSY; // 如果三个邮箱都无法提供空闲位置，就返回 CAN_BUS_TX_BUSY。
     }
 
-    started = xTaskGetTickCount();
+    started = xTaskGetTickCount(); // 获取当前 tick 计数，用于超时判断
     for (;;) {
         status = CAN_TransmitStatus(CAN1, mailbox);
         if (status == CAN_TxStatus_Ok) {
@@ -93,7 +100,10 @@ CAN_BusTxResult CAN_Bus_SendFrame(CanTxMsg *message)
             return CAN_BUS_TX_FAILED;
         }
         /* 无符号时间差允许 Tick 回绕，不因无 ACK 永久等待。 */
+        // pdMS_TO_TICKS(20) 负责把 20ms 转换成 FreeRTOS 的 Tick 数。
         if ((TickType_t)(xTaskGetTickCount() - started) >= pdMS_TO_TICKS(20)) {
+            // 超时后取消发送，如果不执行取消发送操作，CAN 控制器最终还是会把消息发送出去
+            // 这样软件显示和硬件最终收到的信息不符，导致业务混乱
             CAN_CancelTransmit(CAN1, mailbox);
             return CAN_BUS_TX_TIMEOUT;
         }
@@ -103,9 +113,11 @@ CAN_BusTxResult CAN_Bus_SendFrame(CanTxMsg *message)
 
 uint8_t CAN_Bus_TryReceive(CanRxMsg *message)
 {
+    // 检查 FIFO0 中是否有未处理的消息，没有就立刻返回 0，绝不阻塞
     if (CAN_MessagePending(CAN1, CAN_FIFO0) == 0) {
         return 0;
     }
+    // 接收消息，参数指定从 FIFO0 接收，存放在 message 指向的结构体中
     CAN_Receive(CAN1, CAN_FIFO0, message); /* 内部已释放 FIFO 条目。 */
     return 1;
 }
