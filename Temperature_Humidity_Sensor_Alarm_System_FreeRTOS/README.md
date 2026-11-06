@@ -8,17 +8,17 @@
 
 ![硬件实物](assets/images/13d8b72b12c22ff2e7140d848e50ae0f.jpg)
 
-> **CAN 双节点升级进行中（2026-10-19）**：目标为 A 环境端采样上报、B 管理端显示/按键/报警/阈值保存。开发流程和最终接线以 [CAN开发流程](docs/CAN开发流程.md) 为准。S01、S02.1、S02.2 已由用户实物确认通过；当前 S02.3 加入 A 每秒发送 0x581 测试帧、B 过滤并轮询接收，正常模式 500 kbit/s，等待实物收发验收。原单板功能保留在 `FreeRTOS_Rebuild` 目标中。
+> **CAN 双节点升级进行中（2026-11-07）**：目标为 A 环境端采样上报、B 管理端显示/按键/报警/阈值保存。开发流程和最终接线以 [CAN开发流程](docs/CAN开发流程.md) 为准。S01、S02.1、S02.2、S02.3、S03.1、S03.2、S04.1、S04.2、S04.3、S05.1~S05.4 已由用户实物确认通过；当前 S06.1 做故障可观测性——A 端输出 TEC/REC/LEC/BOFF 快照，B 端每 10 秒输出累积计数，为断线与 bus-off 实验提供数据。原单板功能保留在 `FreeRTOS_Rebuild` 目标中。
 
 同一个 `Project.uvprojx` 现在包含三个构建目标：
 
 | 目标 | 入口 | 当前用途 | 生成固件 |
 |---|---|---|---|
 | `FreeRTOS_Rebuild` | `User/main.c` | 原单板采集、显示、按键、报警、阈值保存 | `Objects/Project.axf` |
-| `A_Environment` | `User/main_environment.c` | A 每秒发送测试帧，OLED 显示 TX/E/Alive，9600/8N1 输出 `[A]` | `Objects/A_Environment/A_Environment.axf` |
-| `B_Manager` | `User/main_manager.c` | B 校验测试帧，OLED 显示 RX/最后序号/Alive，9600/8N1 输出 `[B]` | `Objects/B_Manager/B_Manager.axf` |
+| `A_Environment` | `User/main_environment.c` | A 每 2 秒采样 DHT11 并发 0x181，每秒发 0x701 心跳；OLED 显示温湿度/TX/Alive；每秒输出 CAN 错误状态快照 | `Objects/A_Environment/A_Environment.axf` |
+| `B_Manager` | `User/main_manager.c` | B 过滤并解析 0x181/0x701，校验量程与序号，显示 A 的温湿度与数据新鲜度；按键菜单、历史页、阈值保存（W25Q64）、超阈值声光报警，9600/8N1 输出 `[B]` | `Objects/B_Manager/B_Manager.axf` |
 
-在 Keil 重新打开工程后选择所需目标，编译并烧到对应板。三个 main 都会出现在文件列表中，但通过每目标的 `Include in Target Build` 设置，实际只编译一个入口。A/B 新目标当前只做启动诊断，不提供原单板菜单和测量功能；要运行原有功能选择 `FreeRTOS_Rebuild`。本步 DHT11 仍留在 B，TJA1050 的 PA11/PA12 信号线仍保持断开。
+在 Keil 重新打开工程后选择所需目标，编译并烧到对应板。三个 main 都会出现在文件列表中，但通过每目标的 `Include in Target Build` 设置，实际只编译一个入口。A/B 新目标目前只做启动诊断与链路联调，不提供原单板菜单和测量功能；要运行原有功能选择 `FreeRTOS_Rebuild`。DHT11 自 S03.1 起接到 A 的 PA0，B 不再采集；TJA1050 的 PA11/PA12 已在 S02.2 接入。
 
 ---
 
@@ -178,7 +178,7 @@ DHT11 → Sensor Task → sensorQueue → Display Task → OLED（RUN 状态下�
 
 | 外设 | STM32 引脚 | 说明 |
 | :--- | :--- | :--- |
-| **DHT11** | PA0 | 单总线数据引脚 |
+| **DHT11** | PA0 | 单总线数据引脚；S03.1 起从 B 迁到 A，B 不再采集 |
 | **OLED (I2C)** | SCL: PB8, SDA: PB9 | 0.96 寸 128x64 |
 | **按键 K1** | PA1 | 运行/停止总开关 |
 | **按键 K2** | PA2 | 菜单确认（阈值编辑页由 K5 保存） |

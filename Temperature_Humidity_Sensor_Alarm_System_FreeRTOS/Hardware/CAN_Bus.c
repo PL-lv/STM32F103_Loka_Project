@@ -4,21 +4,20 @@
 #include "task.h"
 
 // static 修饰函数，表示这个函数只能在当前 .c 文件中调用。
-// 函数 CAN_Bus_ConfigTestFilter 用于配置 CAN 过滤器，只接收特定 ID 的消息。
-static void CAN_Bus_ConfigTestFilter(void)
+// 一个过滤器组只匹配一个标准数据帧 ID：ID 全比较，IDE/RTR 必须为标准帧/数据帧。
+static void CAN_Bus_ConfigFilter(uint8_t number, uint16_t id)
 {
     CAN_FilterInitTypeDef filter;
 
     /* 32 位过滤器：标准 ID 在位 31:21，IDE 在位 2，RTR 在位 1。 */
-    filter.CAN_FilterNumber = 0; // 一共 14 个过滤器，编号 0~13，这里选择编号 0 的过滤器
+    filter.CAN_FilterNumber = number; // 一共 14 个过滤器，编号 0~13
     filter.CAN_FilterMode = CAN_FilterMode_IdMask; // 掩码模式，掩码中的 1 表示必须比较，0 表示忽略这一位。
-    // 32 位过滤器：标准 ID 在位 31:21，IDE 在位 2，RTR 在位 1。
     filter.CAN_FilterScale = CAN_FilterScale_32bit; // 32 位过滤器
 //  标准 CAN ID 是 11 位，存放在 32 位过滤器的 bit 31～21。
 //  而 CAN_FilterIdHigh 只代表整个 32 位过滤器的高 16 位。
 //  所以，标准 ID 需要在这个 16 位字段中左移 5 位。
 //  过滤失败后，B端的 CAN 控制器仍然可以在 ACK 槽发送显性位，确认物理总线上的报文被正确接收。
-    filter.CAN_FilterIdHigh = (uint16_t)(CAN_BUS_TEST_ID << 5); // 过滤器预先配置的目标 ID
+    filter.CAN_FilterIdHigh = (uint16_t)(id << 5); // 过滤器预先配置的目标 ID
     filter.CAN_FilterIdLow = 0;
     filter.CAN_FilterMaskIdHigh = 0xFFE0;
     filter.CAN_FilterMaskIdLow = 0x0006; /* 同时要求标准帧、数据帧。 */
@@ -27,7 +26,21 @@ static void CAN_Bus_ConfigTestFilter(void)
     CAN_FilterInit(&filter);
 }
 
-CAN_BusInitResult CAN_Bus_Init(void)
+/* 0x181 与 0x701 的共同位太少，一个掩码罩不住两者（会顺带放行大量无关 ID），
+ * 因此占用两个过滤器组，都投递到 FIFO0。CAN_FilterInit 每次都自己进入并退出
+ * 过滤器初始化模式，多次调用不会把前一组关掉。
+ */
+static void CAN_Bus_ConfigFilters(CAN_BusFilterMode mode)
+{
+    if (mode == CAN_BUS_FILTER_MANAGER) {
+        CAN_Bus_ConfigFilter(0, CAN_BUS_SAMPLE_ID);
+        CAN_Bus_ConfigFilter(1, CAN_BUS_HEARTBEAT_ID);
+    } else {
+        CAN_Bus_ConfigFilter(0, CAN_BUS_TEST_ID);
+    }
+}
+
+CAN_BusInitResult CAN_Bus_Init(CAN_BusFilterMode mode)
 {
     RCC_ClocksTypeDef clocks;
     GPIO_InitTypeDef gpio;
@@ -74,7 +87,7 @@ CAN_BusInitResult CAN_Bus_Init(void)
         return CAN_BUS_INIT_CONTROLLER_ERROR;
     }
 
-    CAN_Bus_ConfigTestFilter();
+    CAN_Bus_ConfigFilters(mode);
     /* S02.3 先用任务轮询，尚不启用 CAN 接收中断。 */
     return CAN_BUS_INIT_OK;
 }
@@ -120,4 +133,42 @@ uint8_t CAN_Bus_TryReceive(CanRxMsg *message)
     // 接收消息，参数指定从 FIFO0 接收，存放在 message 指向的结构体中
     CAN_Receive(CAN1, CAN_FIFO0, message); /* 内部已释放 FIFO 条目。 */
     return 1;
+}
+
+/* RM0008 的 CAN_ESR：bit2 = BOFF，bit1 = EPV。
+ * 标准库头文件只导出了 TEC/REC/LEC 的 getter，没有导出这两个位，
+ * 所以按寄存器定义直接用掩码读，不用魔数。
+ */
+#define CAN_BUS_ESR_BOFF 0x00000004U
+#define CAN_BUS_ESR_EPV  0x00000002U
+
+void CAN_Bus_ReadErrorStatus(CAN_BusErrorStatus *status)
+{
+    uint32_t esr;
+
+    if (status == 0) {
+        return;
+    }
+    /* TEC/REC/LEC 走标准库，避免自己移位时把位段搞错。 */
+    status->tec = CAN_GetLSBTransmitErrorCounter(CAN1);
+    status->rec = CAN_GetReceiveErrorCounter(CAN1);
+    status->lec = CAN_GetLastErrorCode(CAN1);
+    esr = CAN1->ESR;
+    status->bus_off = (uint8_t)((esr & CAN_BUS_ESR_BOFF) ? 1U : 0U);
+    status->error_passive = (uint8_t)((esr & CAN_BUS_ESR_EPV) ? 1U : 0U);
+}
+
+char *CAN_Bus_ErrorCodeText(uint8_t lec)
+{
+    switch (lec) {
+    case 0U: return "none";
+    case 1U: return "stuff";
+    case 2U: return "form";
+    case 3U: return "ack";
+    case 4U: return "bit-rec";
+    case 5U: return "bit-dom";
+    case 6U: return "crc";
+    case 7U: return "sw";
+    default: return "?";
+    }
 }

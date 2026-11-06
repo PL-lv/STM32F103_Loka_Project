@@ -33,7 +33,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6673047-3818-4576-b083-24d6a605a339" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/mermaid1792420296133.mermaid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4-1 OLED显示屏/Project.uvguix.32663" beforeDir="false" afterPath="$PROJECT_DIR$/../4-1 OLED显示屏/Project.uvguix.32663" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.axf" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Objects/Project.axf" afterDir="false" />
@@ -42,7 +42,18 @@
       <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvguix.32663" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvguix.32663" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/../8-1-CAN总线单个设备回环测试/Project.uvoptx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGENTS.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Hardware/CAN_Bus.c" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/CAN_Bus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/CAN_Bus.h" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/CAN_Bus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.uvguix.32663" beforeDir="false" afterPath="$PROJECT_DIR$/Project.uvguix.32663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/Project.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/Project.uvprojx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System/UI.c" beforeDir="false" afterPath="$PROJECT_DIR$/System/UI.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System/UI.h" beforeDir="false" afterPath="$PROJECT_DIR$/System/UI.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/main_environment.c" beforeDir="false" afterPath="$PROJECT_DIR$/User/main_environment.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/main_manager.c" beforeDir="false" afterPath="$PROJECT_DIR$/User/main_manager.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CAN开发流程.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +81,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/stm32f10x_can.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/stm32f10x_can.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/stm32f10x_gpio.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/stm32f10x_spi.c" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -82,23 +94,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000001207286" />
-      <entry key="MS500" value="1.021616000229476" />
-      <entry key="S2" value="1.6262459464385188" />
-      <entry key="S5" value="2.256859276900881" />
-      <entry key="S10" value="2.6381316348483157" />
-      <entry key="S30" value="3.2321432088716007" />
-      <entry key="S60" value="3.738696103504597" />
-      <entry key="M2" value="6.1504051504985435" />
-      <entry key="M5" value="14.970712537506236" />
-      <entry key="M10" value="23.338226479001776" />
-      <entry key="M15" value="28.073403118148196" />
-      <entry key="M30" value="35.379260938064334" />
-      <entry key="H1" value="43.51390231766812" />
-      <entry key="H2" value="58.139256775749395" />
-      <entry key="H4" value="77.31214747629974" />
-      <entry key="D1" value="108.86693664664533" />
-      <entry key="W1" value="116.62144124044039" />
+      <entry key="MS100" value="1.000000000667743" />
+      <entry key="MS500" value="1.016031242003978" />
+      <entry key="S2" value="1.6169828453434771" />
+      <entry key="S5" value="2.8787061008193313" />
+      <entry key="S10" value="4.276336603202672" />
+      <entry key="S30" value="6.290244730634904" />
+      <entry key="S60" value="7.211822727831782" />
+      <entry key="M2" value="8.921965157345738" />
+      <entry key="M5" value="13.525634177184799" />
+      <entry key="M10" value="17.141552588677975" />
+      <entry key="M15" value="18.89393574653653" />
+      <entry key="M30" value="23.288346968360372" />
+      <entry key="H1" value="35.14093575712042" />
+      <entry key="H2" value="57.55374864554157" />
+      <entry key="H4" value="87.13277136116949" />
+      <entry key="D1" value="141.05138792901118" />
+      <entry key="W1" value="155.40360934244248" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -106,37 +118,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="1.5597993071710933E-173" />
-      <entry key="S60" value="3.9494294615439025E-87" />
-      <entry key="M2" value="6.284448632572229E-44" />
-      <entry key="M5" value="5.239705431915121E-18" />
-      <entry key="M10" value="2.289040286214974E-9" />
-      <entry key="M15" value="1.7368765729873992E-6" />
-      <entry key="M30" value="0.001317906132085059" />
-      <entry key="H1" value="0.03630297690389948" />
-      <entry key="H2" value="0.19053340101908503" />
-      <entry key="H4" value="0.4365013184620238" />
-      <entry key="D1" value="0.8709587634234519" />
-      <entry key="W1" value="0.980456268745667" />
+      <entry key="S30" value="7.663496449494053E-254" />
+      <entry key="S60" value="2.768302087831829E-127" />
+      <entry key="M2" value="5.2614656587607106E-64" />
+      <entry key="M5" value="4.880257033669977E-26" />
+      <entry key="M10" value="2.2091303795090923E-13" />
+      <entry key="M15" value="3.6543844312995057E-9" />
+      <entry key="M30" value="6.0451504789372365E-5" />
+      <entry key="H1" value="0.007775056577888825" />
+      <entry key="H2" value="0.08817628126593245" />
+      <entry key="H4" value="0.29694491284737046" />
+      <entry key="D1" value="0.816794205747397" />
+      <entry key="W1" value="0.9715041587437375" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3303071356212922E-6" />
-      <entry key="MS500" value="0.08168316792384378" />
-      <entry key="S2" value="1.0801687556115795" />
-      <entry key="S5" value="1.9752132392552186" />
-      <entry key="S10" value="2.4832001978869434" />
-      <entry key="S30" value="3.1767659018813004" />
-      <entry key="S60" value="3.7064292951683124" />
-      <entry key="M2" value="6.111227337053352" />
-      <entry key="M5" value="14.918844259874023" />
-      <entry key="M10" value="23.295044183747436" />
-      <entry key="M15" value="28.03815374546638" />
-      <entry key="M30" value="35.35798266661235" />
-      <entry key="H1" value="43.536204115342976" />
-      <entry key="H2" value="58.320507720771104" />
-      <entry key="H4" value="77.742569798652" />
-      <entry key="D1" value="109.73649754654043" />
-      <entry key="W1" value="117.60168446817833" />
+      <entry key="MS100" value="0.0011063319208849468" />
+      <entry key="MS500" value="0.2609742252380402" />
+      <entry key="S2" value="1.1393159685433454" />
+      <entry key="S5" value="2.447979667517805" />
+      <entry key="S10" value="3.9267134281173957" />
+      <entry key="S30" value="6.1154929311151935" />
+      <entry key="S60" value="7.112971661793663" />
+      <entry key="M2" value="8.864248209249546" />
+      <entry key="M5" value="13.493494834097046" />
+      <entry key="M10" value="17.12171255533067" />
+      <entry key="M15" value="18.879396939983884" />
+      <entry key="M30" value="23.278831384800572" />
+      <entry key="H1" value="35.14020310416924" />
+      <entry key="H2" value="57.634101031690854" />
+      <entry key="H4" value="87.42349842375725" />
+      <entry key="D1" value="141.866463366681" />
+      <entry key="W1" value="156.3748423825688" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -155,6 +167,7 @@
   <component name="ProjectSessionTemplates">
     <option name="panelTemplate">
       <template>
+        <option name="ensembleEnabled" value="false" />
         <option name="modeId" value="Agent" />
         <option name="model">
           <model>
@@ -166,6 +179,7 @@
         <option name="worktreeMode" value="WORKSPACE" />
       </template>
     </option>
+    <option name="version" value="1" />
   </component>
   <component name="ProjectStatusUIService">{
   &quot;uiKindId&quot;: &quot;Widget&quot;
@@ -202,7 +216,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -277,6 +291,17 @@
       <workItem from="1792389220389" duration="11572000" />
       <workItem from="1792418430883" duration="89000" />
       <workItem from="1792418533163" duration="2877000" />
+      <workItem from="1792573191778" duration="3988000" />
+      <workItem from="1792921331315" duration="1581000" />
+      <workItem from="1792986039165" duration="2948000" />
+      <workItem from="1792994079299" duration="614000" />
+      <workItem from="1793433703645" duration="52000" />
+      <workItem from="1793548815852" duration="49000" />
+      <workItem from="1793707915520" duration="1621000" />
+      <workItem from="1793786830816" duration="2557000" />
+      <workItem from="1793806252901" duration="115000" />
+      <workItem from="1793806401097" duration="128000" />
+      <workItem from="1793964801419" duration="11449000" />
     </task>
     <servers />
   </component>

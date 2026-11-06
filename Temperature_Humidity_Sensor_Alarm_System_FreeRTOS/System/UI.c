@@ -38,6 +38,18 @@ void run_ui(uint8_t temp, uint8_t humi) {
     OLED_ShowChar(3, 8, '%');
 
 }
+/* ========== 运行界面：无可信数据 ========== */
+/* 数值位保持 --，不在屏幕上留下上一次的读数；第 4 行说明原因，
+ * 让“传感器坏”“数据过期”“还没收到 A”三种情况在屏幕上有区别。
+ */
+void run_ui_invalid(char *reason) {
+
+    OLED_ShowString(1, 1, "DHT11 Monitor");
+    OLED_ShowString(2, 1, "Temp: --");
+    OLED_ShowString(3, 1, "Humi: --");
+    OLED_ShowString(4, 1, "                "); /* 先清整行，防止旧字符残留 */
+    OLED_ShowString(4, 1, reason);
+}
 /* ========== 设置主菜单 ========== */
 
 void setting_menu_ui(void) {
