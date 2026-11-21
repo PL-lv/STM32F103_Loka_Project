@@ -1,4 +1,4 @@
-﻿#include "stm32f10x.h"
+#include "stm32f10x.h"
 #include "CAN_Bus.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -140,7 +140,8 @@ uint8_t CAN_Bus_TryReceive(CanRxMsg *message)
  * 所以按寄存器定义直接用掩码读，不用魔数。
  */
 #define CAN_BUS_ESR_BOFF 0x00000004U
-#define CAN_BUS_ESR_EPV  0x00000002U
+#define CAN_BUS_ESR_EPV  0x00000002U // 0000 0000 0000 0010（后16位）TEC 大于 127 时，CAN 控制器进入错误被动状态，EPV=1。TEC 小于等于 127 时，EPV=0。
+#define CAN_BUS_ESR_LEC  0x00000070U
 
 void CAN_Bus_ReadErrorStatus(CAN_BusErrorStatus *status)
 {
@@ -149,11 +150,14 @@ void CAN_Bus_ReadErrorStatus(CAN_BusErrorStatus *status)
     if (status == 0) {
         return;
     }
-    /* TEC/REC/LEC 走标准库，避免自己移位时把位段搞错。 */
+    /* TEC/REC 走标准库。LEC 不能走：本仓库这版 SPL 的
+     * CAN_GetLastErrorCode() 少了右移 4 位，LEC=3 会被读成 0x30，
+     * 串口上显示成 lec=48(?)。这里按 RM0008 的 bit6:4 自己取。
+     */
     status->tec = CAN_GetLSBTransmitErrorCounter(CAN1);
     status->rec = CAN_GetReceiveErrorCounter(CAN1);
-    status->lec = CAN_GetLastErrorCode(CAN1);
-    esr = CAN1->ESR;
+    status->lec = (uint8_t)((CAN1->ESR & CAN_BUS_ESR_LEC) >> 4);
+    esr = CAN1->ESR; // 读取 ESR 寄存器，检查 BOFF 和 EPV 位
     status->bus_off = (uint8_t)((esr & CAN_BUS_ESR_BOFF) ? 1U : 0U);
     status->error_passive = (uint8_t)((esr & CAN_BUS_ESR_EPV) ? 1U : 0U);
 }

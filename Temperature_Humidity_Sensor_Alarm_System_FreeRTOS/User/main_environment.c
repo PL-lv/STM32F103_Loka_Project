@@ -84,20 +84,50 @@ static void Environment_ReportCanErrors(void)
 {
     /* 用不可能出现的初值，强制上电第一轮必打一行。 */
     static CAN_BusErrorStatus last = {0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU};
+    static uint8_t bus_off_seen = 0; /* bus-off 只存在几毫秒，轮询会错过，这里锁存 */
+    static uint8_t quiet = 0;        /* 连续无变化的秒数 */
     CAN_BusErrorStatus now;
-    char log[80];
+    char log[160];
+    uint8_t changed;
 
     CAN_Bus_ReadErrorStatus(&now);
-    if (now.tec == last.tec && now.rec == last.rec && now.lec == last.lec &&
-        now.bus_off == last.bus_off && now.error_passive == last.error_passive) {
-        return;
+    if (now.bus_off != 0U) {
+        bus_off_seen = 1U;
     }
+
+    changed = (uint8_t)((now.tec != last.tec || now.rec != last.rec ||
+                         now.lec != last.lec || now.bus_off != last.bus_off ||
+                         now.error_passive != last.error_passive) ? 1U : 0U);
+
+    /* 数值不变时不再永久静默，每 5 秒补打一行。
+     * 之前只在变化时打印，TEC 一旦冻结整段日志就消失，
+     * 分不清是“真的没变化”还是“任务已经卡死”。
+     */
+    if (changed == 0U) {
+        quiet++;
+        if (quiet < 5U) {
+            return;
+        }
+    }
+    quiet = 0;
     last = now;
+
+    /* tx=成功/失败：和 TEC 一起看，能区分“没在发”和“发了但硬件没计数”。
+     * 重要：拔掉对端后 TEC 停在 128 不再上涨，是 ISO 11898-1 的错误计数
+     * 例外——错误被动节点因收不到 ACK 而报的 ACK 错误不再加分，所以永远
+     * 到不了 bus-off。这是标准行为，不是故障（详见 CAN开发流程.md 21.6）。
+     * esr/msr 裸值保留：真出现异常冻结时，还要靠 INIT/INAK/TXM/BOFF 排除
+     * 模式问题；总线空闲时 msr 正常值约 0x00000C00，不是故障。
+     */
     snprintf(log, sizeof(log),
-             "[A] can tec=%u rec=%u lec=%u(%s) boff=%u epv=%u\r\n",
+             "[A] can tec=%u rec=%u lec=%u(%s) boff=%u epv=%u seen=%u tx=%lu/%lu esr=%08lX msr=%08lX\r\n",
              (unsigned int)now.tec, (unsigned int)now.rec,
              (unsigned int)now.lec, CAN_Bus_ErrorCodeText(now.lec),
-             (unsigned int)now.bus_off, (unsigned int)now.error_passive);
+             (unsigned int)now.bus_off, (unsigned int)now.error_passive,
+             (unsigned int)bus_off_seen,
+             (unsigned long)g_environment_tx_ok,
+             (unsigned long)g_environment_tx_errors,
+             (unsigned long)CAN1->ESR, (unsigned long)CAN1->MSR);
     USART_SendString(log);
 }
 

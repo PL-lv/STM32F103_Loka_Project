@@ -9,7 +9,7 @@
  * 多字节字段逐字节打包，不直接发送结构体内存。
  */
 #define CAN_BUS_SAMPLE_ID        ((uint16_t)0x181) // 包裹编号
-#define CAN_BUS_HEARTBEAT_ID     ((uint16_t)0x701)
+#define CAN_BUS_HEARTBEAT_ID     ((uint16_t)0x701) // 心跳编号
 #define CAN_BUS_PROTOCOL_VERSION ((uint8_t)1)
 
 /* S02.2：只报告本地初始化结果，不代表对端在线或已完成收发。 */

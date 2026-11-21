@@ -1,14 +1,16 @@
-# 智能温湿度监测与报警系统（FreeRTOS 版）
+# 智能温湿度监测与报警系统（FreeRTOS / CAN 双节点）
 
 基于 **STM32F103C8T6** 标准库 + **FreeRTOS V10.3.1** 开发的嵌入式多任务实战项目。在裸机版双层状态机架构的基础上，将传感器采集、OLED 显示、报警处理、按键扫描、状态机和历史记录拆分为 6 个独立任务，通过队列和互斥锁进行任务间协作。
 
-> 本项目配套 [Python 上位机](https://github.com/Luoka666/upper_computer)，通过串口接收数据并在 PC 端绘制实时温湿度动态曲线，实现从单片机到 PC 端的完整数据闭环。
+> 本项目配套 [Python 上位机](https://github.com/PL-lv/upper_computer)，通过串口接收数据并在 PC 端绘制实时温湿度动态曲线。
 >
 > 本项目同时维护两个版本：[裸机版（标准库状态机）](../Temperature_Humidity_Sensor_Alarm_System_BareMetal/) | **FreeRTOS 版（当前）**
 
 ![硬件实物](assets/images/13d8b72b12c22ff2e7140d848e50ae0f.jpg)
 
-> **CAN 双节点升级进行中（2026-11-07）**：目标为 A 环境端采样上报、B 管理端显示/按键/报警/阈值保存。开发流程和最终接线以 [CAN开发流程](docs/CAN开发流程.md) 为准。S01、S02.1、S02.2、S02.3、S03.1、S03.2、S04.1、S04.2、S04.3、S05.1~S05.4 已由用户实物确认通过；当前 S06.1 做故障可观测性——A 端输出 TEC/REC/LEC/BOFF 快照，B 端每 10 秒输出累积计数，为断线与 bus-off 实验提供数据。原单板功能保留在 `FreeRTOS_Rebuild` 目标中。
+> **CAN 双节点当前状态（验收记录更新至 2026-11-18）**：A 环境端每 2 秒采样上报、每秒发送心跳；B 管理端接收并校验数据，完成显示、按键菜单、历史记录、报警与 W25Q64 阈值保存。S01 至 S05.4 已由用户实物确认；S06.2 的断线、A 端重启与“恢复须收到新有效样本”验收已通过。波特率错配故障实验及日志分析见 [CAN 开发流程 21.8 与 21.9](docs/CAN开发流程.md#218-bus-off-复现成功2026-11-15-1920)。原单板功能保留在 `FreeRTOS_Rebuild` 目标中。
+
+**当前验证边界**：bus-off 实验依据 TEC/REC 归零、错误状态及自动恢复行为分析，尚未用错误中断直接锁存 BOFF 或精确计次；S07 的 30 分钟长稳和栈/堆余量检查尚未开始。历史仍仅保存在 RAM，不提供 CAN 反向控制。完整接线、协议及逐步验收记录见 [CAN开发流程](docs/CAN开发流程.md)。
 
 同一个 `Project.uvprojx` 现在包含三个构建目标：
 
@@ -18,7 +20,13 @@
 | `A_Environment` | `User/main_environment.c` | A 每 2 秒采样 DHT11 并发 0x181，每秒发 0x701 心跳；OLED 显示温湿度/TX/Alive；每秒输出 CAN 错误状态快照 | `Objects/A_Environment/A_Environment.axf` |
 | `B_Manager` | `User/main_manager.c` | B 过滤并解析 0x181/0x701，校验量程与序号，显示 A 的温湿度与数据新鲜度；按键菜单、历史页、阈值保存（W25Q64）、超阈值声光报警，9600/8N1 输出 `[B]` | `Objects/B_Manager/B_Manager.axf` |
 
-在 Keil 重新打开工程后选择所需目标，编译并烧到对应板。三个 main 都会出现在文件列表中，但通过每目标的 `Include in Target Build` 设置，实际只编译一个入口。A/B 新目标目前只做启动诊断与链路联调，不提供原单板菜单和测量功能；要运行原有功能选择 `FreeRTOS_Rebuild`。DHT11 自 S03.1 起接到 A 的 PA0，B 不再采集；TJA1050 的 PA11/PA12 已在 S02.2 接入。
+在 Keil 重新打开工程后选择所需目标，编译并烧到对应板。三个 main 都会出现在文件列表中，但通过每目标的 `Include in Target Build` 设置，实际只编译一个入口。双节点系统分别烧录 `A_Environment` 与 `B_Manager`；要运行原单板实现选择 `FreeRTOS_Rebuild`。DHT11 接 A 的 PA0，B 不再直接采集；TJA1050 使用 PA11/PA12，接线细节以开发流程为准。
+
+### 最近一次代码验证（2026-11-21）
+
+- 在仓库外的独立目录完整重建 `A_Environment`、`B_Manager`、`FreeRTOS_Rebuild`，三个目标均为 `0 Error(s), 0 Warning(s)`，未覆盖原工程的 Objects/Listings。
+- 当前 `Tests/test_threshold_storage.c` 经主机 GCC 严格警告编译并执行，20 项存储模拟测试全部通过。
+- 本次为源码构建与主机验证，没有自动烧录，也没有新增实物测试结论；实物结果沿用开发流程中逐项记录的用户反馈。
 
 ---
 

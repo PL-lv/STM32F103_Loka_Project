@@ -139,6 +139,19 @@ static uint32_t Manager_ReadUptimeMs(const CanRxMsg *message)
            ((uint32_t)message->Data[7] << 24);
 }
 
+/* 状态名只用于串口日志。0xFF 是“还没有状态”的初值，不打印。
+ */
+static const char *Manager_StateText(uint8_t state)
+{
+    switch (state) {
+    case MANAGER_DATA_NONE:  return "NONE";
+    case MANAGER_DATA_OK:    return "OK";
+    case MANAGER_DATA_FAIL:  return "FAIL";
+    case MANAGER_DATA_STALE: return "STALE";
+    default:                 return "?";
+    }
+}
+
 /* 状态由三件事共同决定：收没收到过、链路在不在、数据新不新。
  * 链路断了不能因为“时间还没到 5 秒”就继续显示 OK。
  */
@@ -444,6 +457,16 @@ static void Manager_StartupTask(void *argument)
                 alarm_item.temperature = 0U;
                 alarm_item.humidity = 0U;
                 (void)xQueueOverwrite(alarmQueue, &alarm_item);
+            }
+            /* 状态变迁打一行：“恢复需新数据”的验收就看这行的位置——
+             * 从 STALE 回到 OK 必须发生在新的一帧 181 之后，不能在心跳
+             * 恢复的那一刻就拿旧值冒充。第一次进入（0xFF）不打印。
+             */
+            if (last_alarm_state <= MANAGER_DATA_STALE) {
+                snprintf(log, sizeof(log), "[B] state %s -> %s\r\n",
+                         Manager_StateText(last_alarm_state),
+                         Manager_StateText(data_state));
+                USART_SendString(log);
             }
             last_alarm_state = data_state;
         }
